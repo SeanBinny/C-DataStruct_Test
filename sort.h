@@ -93,4 +93,18 @@ void bubbleSort( T a[], int n )
 }
 // end function bubble
 
+
+// using insert method to srot
+template < typename T >
+void insertionSort( T a[], int n )
+{
+    for( int i = 1; i < n; i++ )
+    {
+        T t = a[i];
+        for( int j = i - 1; j >= 0 && t < a[j];j-- )
+            a[j+1] = a[j];
+        a[j+1] = t;
+    }
+} // end function insertionSort
+
 #endif // SORT_H
