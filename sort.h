@@ -59,4 +59,23 @@ void selectionSort( T a[], int n )
     }
 }// end of function
 
+
+// function just for bubble one time
+template < T >
+void bubble( T a[], int n )
+{
+    for( int i = 0; i < n-1; i++ )
+       if( a[i] > a[i+1] )
+           swap( a[i], a[i+1]);
+
+}
+
+template < T >
+void bubbleSort( T a[], int n )
+{
+    for ( int i = n; i > 1; i-- )
+        bubble( a, i );
+}
+// end function bubble
+
 #endif // SORT_H
