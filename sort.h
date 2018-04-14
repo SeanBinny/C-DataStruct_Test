@@ -52,29 +52,44 @@ void rearrange( T a[], int n, int r[] )
 template < class T >
 void selectionSort( T a[], int n )
 {
-    for( int size = n; size > 1; size-- )
+//    for( int size = n; size > 1; size-- )
+//    {
+//        int j = indexOfMax( a, size );
+//        swap( a[j], a[size - 1]);
+//    }
+
+    bool sorted = false;
+    for (int size = n; !sorted && (size-1); size -- )
     {
-        int j = indexOfMax( a, size );
-        swap( a[j], a[size - 1]);
+        int indexOfMax = 0;
+        sorted = true;
+        for( int i = 1; i < size; i++ )
+            if( a[indexOfMax] <= a[i] )  indexOfMax = i;
+        else sorted = false;             // if program pass here , it must unsorted;
+        swap( a[indexOfMax], a[size-1]);
+
     }
 }// end of function
 
 
 // function just for bubble one time
 template < T >
-void bubble( T a[], int n )
+bool bubble( T a[], int n )
 {
+    bool swapped = false;
     for( int i = 0; i < n-1; i++ )
        if( a[i] > a[i+1] )
+       {
            swap( a[i], a[i+1]);
-
+           swapped = true;
+       }
+    return swapped;
 }
 
 template < T >
 void bubbleSort( T a[], int n )
 {
-    for ( int i = n; i > 1; i-- )
-        bubble( a, i );
+    for ( int i = n; i > 1 && bubble( a, i); i-- );
 }
 // end function bubble
 
